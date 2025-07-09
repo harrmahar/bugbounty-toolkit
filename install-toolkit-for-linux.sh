@@ -24,6 +24,10 @@ if [[ "$OSTYPE" != "linux-gnu"* ]]; then
     exit 1
 fi
 
+# Memperbarui daftar paket
+print_message "Memperbarui daftar paket untuk Linux..."
+sudo apt update -y
+
 # Deleting command using apt
 print_message "Remove cmake, libpcap-dev..."
 sudo apt remove cmake -y
@@ -34,10 +38,6 @@ cd /usr/local/bin
 sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl nuclei subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
 sudo apt autoremove -y
 cd ~/
-
-# Memperbarui daftar paket
-print_message "Memperbarui daftar paket untuk Linux..."
-sudo apt update -y
 
 # Menginstal CMake dan libpcap
 if ! is_installed cmake; then
