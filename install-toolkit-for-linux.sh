@@ -55,7 +55,7 @@ fi
 if ! is_installed "python$python_version"; then
     print_message "Menginstal Python $python_version..."
     sudo apt install python3.13 -y
-    python3.13 -m pip install --upgrade pip
+    python3.13 -m pip install --upgrade pip --break-system-packages
 else
     print_message "Python $python_version sudah terinstal."
 fi
@@ -76,6 +76,27 @@ fi
 # Installing Golang tools
 print_message "Installing Golang tools..."
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+go install -v github.com/tomnomnom/assetfinder@latest
+go install -v github.com/incogbyte/shosubgo@latest
+go install -v github.com/gwen001/github-subdomains@latest
+go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
+go install -v github.com/ffuf/ffuf/v2@latest
+go install -v github.com/OJ/gobuster/v3@latest
+go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+go install -v github.com/lc/gau/v2/cmd/gau@latest
+go install -v github.com/tomnomnom/waybackurls@latest
+go install -v github.com/projectdiscovery/katana/cmd/katana@latest
+go install -v github.com/hakluke/hakrawler@latest
+go install -v github.com/tomnomnom/gf@latest
+go install -v github.com/tomnomnom/qsreplace@latest
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+go install -v github.com/tomnomnom/httprobe@latest
+go install -v github.com/tomnomnom/anew@latest
+go install -v github.com/tomnomnom/unfurl@latest
+go install -v github.com/PentestPad/subzy@latest
+go install -v github.com/takshal/freq@latest
+go install -v github.com/Emoe/kxss@latest
+go install -v github.com/rix4uni/xsschecker@latest
 
 # Copying Go tools to /usr/local/bin
 print_message "Copying Go tools to /usr/local/bin..."
@@ -106,7 +127,7 @@ cd ~/BUG_BOUNTY_TOOLS
 # Installing Dirsearch
 if ! is_installed dirsearch; then
     print_message "Installing Dirsearch..."
-    sudo python3.13 -m pip install dirsearch --break-system-packages
+    pip3 install -U dirsearch --break-system-packages
 else
     print_message "Dirsearch is already installed."
 fi
@@ -199,9 +220,12 @@ else
     print_message "RustScan is already installed."
 fi
 
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
-cd ~/go/bin
-sudo cp nuclei /usr/local/bin
+# Installing Nuclei
+git clone https://github.com/projectdiscovery/nuclei.git
+cd nuclei/cmd/nuclei
+go build
+mv nuclei /usr/local/bin/
+nuclei -version
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
