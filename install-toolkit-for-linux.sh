@@ -34,9 +34,6 @@ sudo apt remove cmake -y
 sudo apt remove -y libpcap-dev
 sudo apt remove ffuf -y
 sudo rm -rf /usr/local/go
-cd /usr/local/bin
-sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl nuclei subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
-sudo apt autoremove -y
 cd ~/
 
 # Menginstal CMake dan libpcap
@@ -107,6 +104,9 @@ go install -v github.com/rix4uni/xsschecker@latest
 
 # Copying Go tools to /usr/local/bin
 print_message "Copying Go tools to /usr/local/bin..."
+cd /usr/local/bin
+sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl nuclei subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
+sudo apt autoremove -y
 cd ~/go/bin
 sudo cp * /usr/local/bin/
 
@@ -131,10 +131,7 @@ cd ~/BUG_BOUNTY_TOOLS
 # Installing Dirsearch
 if ! is_installed dirsearch; then
     print_message "Installing Dirsearch..."
-    git clone https://github.com/maurosoria/dirsearch.git
-    cd dirsearch
-    sudo python3.13 -m pip3 install -r requirements.txt
-    sudo python3.13 setup.py install
+    sudo python3.13 -m pip uninstall dirsearch --break-system-packages -y
 else
     print_message "Dirsearch is already installed."
 fi
