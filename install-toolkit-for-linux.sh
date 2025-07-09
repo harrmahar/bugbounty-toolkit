@@ -138,8 +138,8 @@ if ! is_installed dirsearch; then
     print_message "Installing Dirsearch..."
     git clone https://github.com/maurosoria/dirsearch.git
     cd dirsearch
-    sudo python3.11 -m pip3 install -r requirements.txt
-    sudo python3.11 setup.py install
+    sudo python3.13 -m pip3 install -r requirements.txt
+    sudo python3.13 setup.py install
 else
     print_message "Dirsearch is already installed."
 fi
@@ -160,13 +160,13 @@ cd ~/BUG_BOUNTY_TOOLS
 print_message "Installing Dirhunt..."
 git clone https://github.com/Nekmo/dirhunt.git
 cd dirhunt
-sudo python3.11 -m pip install . --break-system-packages
+sudo python3.13 -m pip install . --break-system-packages
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
 
 # Installing Bhedak
-sudo python3.11 -m pip install bhedak --break-system-packages
+sudo python3.13 -m pip install bhedak --break-system-packages
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
@@ -184,7 +184,7 @@ if ! is_installed paramspider; then
     print_message "Installing ParamsPider..."
     git clone https://github.com/devanshbatham/paramspider
     cd paramspider
-    sudo python3.11 -m pip install . --break-system-packages
+    sudo python3.13 -m pip install . --break-system-packages
 else
     print_message "ParamsPider is already installed."
 fi
