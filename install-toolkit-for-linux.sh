@@ -29,9 +29,7 @@ print_message "Remove cmake, libpcap-dev..."
 sudo apt remove cmake -y
 sudo apt remove -y libpcap-dev
 sudo apt remove ffuf -y
-sudo apt remove golang* -y
-sudo python3.11 -m pip uninstall dirsearch --break-system-packages -y
-sudo python3.11 -m pip uninstall bhedak --break-system-packages -y
+sudo rm -rf /usr/local/go
 cd /usr/local/bin
 sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl nuclei subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
 sudo apt autoremove -y
@@ -59,11 +57,14 @@ fi
 # Menginstal Python 3.11
 if ! is_installed "python$python_version"; then
     print_message "Menginstal Python $python_version..."
-    sudo apt install python3.11 -y
-    python3.11 -m pip install --upgrade pip
+    sudo apt install python3.13 -y
+    python3.13 -m pip install --upgrade pip
 else
     print_message "Python $python_version sudah terinstal."
 fi
+
+sudo python3.13 -m pip uninstall dirsearch --break-system-packages -y
+sudo python3.13 -m pip uninstall bhedak --break-system-packages -y
 
 # Creating folder for bug bounty tools
 print_message "Creating BUG_BOUNTY_TOOLS directory..."
@@ -73,8 +74,12 @@ cd ~/BUG_BOUNTY_TOOLS
 # Installing Golang
 if ! is_installed go; then
     print_message "Installing Golang..."
-    sudo apt install golang-1.23 golang-go -y
-    go clean -cache -modcache
+    wget https://go.dev/dl/go1.23.11.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go1.23.11.linux-amd64.tar.gz
+    echo 'export GOROOT=/usr/local/go' >> ~/.profile
+    echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile
+    source ~/.profile
+    go version
 else
     print_message "Golang is already installed."
 fi
@@ -146,7 +151,7 @@ cd ~/BUG_BOUNTY_TOOLS
 print_message "Installing Arjun..."
 git clone https://github.com/s0md3v/Arjun.git
 cd Arjun
-sudo python3.11 -m pip install . --break-system-packages
+sudo python3.13 -m pip install . --break-system-packages
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
