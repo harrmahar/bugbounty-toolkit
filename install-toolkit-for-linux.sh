@@ -96,7 +96,6 @@ go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 go install -v github.com/tomnomnom/httprobe@latest
 go install -v github.com/tomnomnom/anew@latest
 go install -v github.com/tomnomnom/unfurl@latest
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 go install -v github.com/PentestPad/subzy@latest
 go install -v github.com/takshal/freq@latest
 go install -v github.com/Emoe/kxss@latest
@@ -105,7 +104,7 @@ go install -v github.com/rix4uni/xsschecker@latest
 # Copying Go tools to /usr/local/bin
 print_message "Copying Go tools to /usr/local/bin..."
 cd /usr/local/bin
-sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl nuclei subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
+sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
 sudo apt autoremove -y
 cd ~/go/bin
 sudo cp * /usr/local/bin/
@@ -131,7 +130,7 @@ cd ~/BUG_BOUNTY_TOOLS
 # Installing Dirsearch
 if ! is_installed dirsearch; then
     print_message "Installing Dirsearch..."
-    sudo python3.13 -m pip uninstall dirsearch --break-system-packages -y
+    sudo python3.13 -m pip install dirsearch --break-system-packages
 else
     print_message "Dirsearch is already installed."
 fi
@@ -203,6 +202,7 @@ if ! is_installed LUcek; then
     git clone https://github.com/rootbakar/LUcek.git
     cd LUcek
     bash requirement-mac.sh
+    sudo cp lucek.py /usr/local/bin/lucek
 else
     print_message "LUcek is already installed."
 fi
@@ -222,6 +222,10 @@ if ! is_installed rustscan; then
 else
     print_message "RustScan is already installed."
 fi
+
+sudo rm -f /usr/local/bin/nuclei
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+sudo cp ~/go/bin/nuclei /usr/local/bin
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
