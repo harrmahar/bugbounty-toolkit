@@ -228,6 +228,7 @@ if ! is_installed nuclei; then
     unzip nuclei_3.4.7_linux_amd64.zip
     sudo mv nuclei /usr/local/bin/
     nuclei -version
+    nuclei
 else
     print_message "Nuclei is already installed."
 fi
