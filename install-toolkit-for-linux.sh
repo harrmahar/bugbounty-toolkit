@@ -221,11 +221,15 @@ else
 fi
 
 # Installing Nuclei
-git clone https://github.com/projectdiscovery/nuclei.git
-cd nuclei/cmd/nuclei
-go build
-mv nuclei /usr/local/bin/
-nuclei -version
+if ! is_installed nuclei; then
+    git clone https://github.com/projectdiscovery/nuclei.git
+    cd nuclei/cmd/nuclei
+    go build
+    mv nuclei /usr/local/bin/
+    nuclei -version
+else
+    print_message "Nuclei is already installed."
+fi
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
