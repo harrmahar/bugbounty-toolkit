@@ -60,9 +60,6 @@ else
     print_message "Python $python_version sudah terinstal."
 fi
 
-sudo python3.13 -m pip uninstall dirsearch --break-system-packages -y
-sudo python3.13 -m pip uninstall bhedak --break-system-packages -y
-
 # Creating folder for bug bounty tools
 print_message "Creating BUG_BOUNTY_TOOLS directory..."
 mkdir -p ~/BUG_BOUNTY_TOOLS
