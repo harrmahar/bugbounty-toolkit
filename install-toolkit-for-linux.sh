@@ -74,12 +74,7 @@ cd ~/BUG_BOUNTY_TOOLS
 # Installing Golang
 if ! is_installed go; then
     print_message "Installing Golang..."
-    wget https://go.dev/dl/go1.23.11.linux-amd64.tar.gz
-    sudo tar -C /usr/local -xzf go1.23.11.linux-amd64.tar.gz
-    echo 'export GOROOT=/usr/local/go' >> ~/.profile
-    echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.profile
-    source ~/.profile
-    go version
+    sudo apt install golang-go -y
 else
     print_message "Golang is already installed."
 fi
@@ -158,9 +153,7 @@ cd ~/BUG_BOUNTY_TOOLS
 
 # Installing Dirhunt
 print_message "Installing Dirhunt..."
-git clone https://github.com/Nekmo/dirhunt.git
-cd dirhunt
-sudo python3.13 -m pip install . --break-system-packages
+sudo python3.13 -m pip install dirhunt --break-system-packages --ignore-installed click
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
