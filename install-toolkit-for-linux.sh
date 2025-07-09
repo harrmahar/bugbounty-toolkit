@@ -79,32 +79,11 @@ fi
 # Installing Golang tools
 print_message "Installing Golang tools..."
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-go install -v github.com/tomnomnom/assetfinder@latest
-go install -v github.com/incogbyte/shosubgo@latest
-go install -v github.com/gwen001/github-subdomains@latest
-go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest
-go install -v github.com/ffuf/ffuf/v2@latest
-go install -v github.com/OJ/gobuster/v3@latest
-go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-go install -v github.com/lc/gau/v2/cmd/gau@latest
-go install -v github.com/tomnomnom/waybackurls@latest
-go install -v github.com/projectdiscovery/katana/cmd/katana@latest
-go install -v github.com/hakluke/hakrawler@latest
-go install -v github.com/tomnomnom/gf@latest
-go install -v github.com/tomnomnom/qsreplace@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-go install -v github.com/tomnomnom/httprobe@latest
-go install -v github.com/tomnomnom/anew@latest
-go install -v github.com/tomnomnom/unfurl@latest
-go install -v github.com/PentestPad/subzy@latest
-go install -v github.com/takshal/freq@latest
-go install -v github.com/Emoe/kxss@latest
-go install -v github.com/rix4uni/xsschecker@latest
 
 # Copying Go tools to /usr/local/bin
 print_message "Copying Go tools to /usr/local/bin..."
 cd /usr/local/bin
-sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl subzy freq kxss xsschecker dirsearch arjun dirhunt urldedupe lucek rustscan crtsh 
+sudo rm -f subfinder assetfinder shosubgo github-subdomains chaos ffuf gobuster naabu gau waybackurls katana hakrawler gf qsreplace httpx httprobe anew unfurl subzy freq kxss xsschecker arjun dirhunt urldedupe lucek rustscan crtsh 
 sudo apt autoremove -y
 cd ~/go/bin
 sudo cp * /usr/local/bin/
@@ -223,9 +202,9 @@ else
     print_message "RustScan is already installed."
 fi
 
-sudo rm -f /usr/local/bin/nuclei
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
-sudo cp ~/go/bin/nuclei /usr/local/bin
+cd ~/go/bin
+sudo cp nuclei /usr/local/bin
 
 # Returning to BUG_BOUNTY_TOOLS directory
 cd ~/BUG_BOUNTY_TOOLS
