@@ -1,3 +1,8 @@
+# This is Modified Version
+This is modified version of Bug Bounty Toolkit from Rootbakar https://github.com/rootbakar/bugbounty-toolkit. Add some features:
+- Tool selection menu (User can choose only the tools he needs)
+- Change dirsearch instalation using `apt install dirsearch`
+
 # BugBountyToolkit
 
 A curated collection of essential tools for bug bounty hunters and cybersecurity professionals, designed to streamline your vulnerability assessments and penetration testing efforts.
