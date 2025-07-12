@@ -41,17 +41,14 @@ A curated collection of essential tools for bug bounty hunters and cybersecurity
 Clone this repository and run the installation script:
 
 ```bash
-git clone https://github.com/rootbakar/bugbounty-toolkit
+git clone https://github.com/harrmahar/bugbounty-toolkit
 ```
 ```bash
 cd bugbounty-toolkit
 ```
 ```bash
-chmod +x install-toolkit-for-linux.sh gf-install.sh
+chmod +x install-toolkit-for-linux.sh
 ```
 ```bash
 ./install-toolkit-for-linux.sh
-```
-```bash
-./gf-install.sh
 ```
